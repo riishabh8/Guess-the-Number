@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Game</title>
+  </head>
+  <body>
+    <form>
+      Enter No:<input type="text" id="number" name="number" /><br />
+      <input type="button" id="val" value="Check Me" onclick="play()" />
+    </form>
+    <h1 id="ans">Answer</h1>
+    <h1 id="his">Last</h1>
+  </body>
+  <script>
+    var arr = [];
+    var secret = Math.round(Math.random() * 10);
+
+    document.addEventListener("keypress", function (event) {
+      if (event.key == "Enter") {
+        event.preventDefault();
+        play();
+      }
+    });
+
+    function showHistory() {
+      //   var last = document.getElementById("his");
+      //   his.innerText = "Your last text was:" + arr[arr.length - 1];
+      var e = "<hr/>";
+
+      for (var y = arr.length - 1; y >= 0; y--) {
+        e += "Last Number Entered = " + arr[y] + "<br/>";
+      }
+      document.getElementById("his").innerHTML = e;
+    }
+
+    function play() {
+      //   var num = document.getElementById("num").value;
+      var number = document.getElementById("number").value;
+      var ans = document.getElementById("ans");
+      if (number < secret) {
+        ans.innerText = "You gussed too low";
+      } else if (number > secret) {
+        ans.innerText = "You gussed to high";
+      } else {
+        ans.innerText = "Aweasome";
+        secret = Math.round(Math.random() * 10);
+      }
+      arr.push(number);
+      showHistory();
+    }
+  </script>
+</html>
