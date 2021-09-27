@@ -12,17 +12,17 @@ document.addEventListener("keypress", function (event) {
   }
   */
 });
+document.getElementById("restart").addEventListener("click", reset);
 function reset() {
   document.getElementById("number").value = "";
+  document.getElementById("rec").innerHTML = "";
   secret = Math.round(Math.random() * 10) + 1;
   var ans = document.getElementById("ans");
   ans.style.visibility = "hidden";
   ans.style.position = "absolute";
   arr.length = 0;
-  document.getElementById("rec").innerHTML = "";
 }
 
-document.getElementById("reset").addEventListener("click", reset());
 // document.getElementById("number").addEventListener("click", function (event) {
 //   event.preventDefault();
 // });
